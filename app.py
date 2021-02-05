@@ -1,5 +1,6 @@
 import requests
 from datetime import date
+from database import add_brand
 
 def scraper(pageNumber=0):
 
@@ -26,14 +27,15 @@ def scraper(pageNumber=0):
             name = brand['name']
             country = brand['originCountryCode']
 
-            products = {
-                'id': id,
+            brandView = {
+                'brand_id': id,
                 'name': name,
                 'country': country,
                 'date': date.today()
             }
 
-            
+            add_brand(brandView['brand_id'], brandView['name'], brandView['country'], brandView['date'])
+
 
         pageNumber += 40
         scraper(pageNumber=pageNumber)
