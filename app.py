@@ -1,6 +1,6 @@
 import requests
 from datetime import date
-from database import add_brand
+from main import add_brand
 
 def scraper(pageNumber=0):
 
